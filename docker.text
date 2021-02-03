@@ -1,7 +1,12 @@
 #/bin/bash
 docker run --name emq-dev-server -p 18083:18083 -p 1883:1883 -p 8084:8084 -p 8883:8883 -p 8083:8083 -d registry.cn-hangzhou.aliyuncs.com/synbop/emqttd:2.3.6
-docker run --name emq-dev-robot -p 18084:18083 -p 1884:1883 -p 8085:8084 -p 8884:8883 -p 8086:8083 -d registry.cn-hangzhou.aliyuncs.com/synbop/emqttd:2.3.6
-docker run --name emq-text-server -p 18085:18083 -p 1885:1883 -p 8087:8084 -p 8885:8883 -p 8088:8083 -d registry.cn-hangzhou.aliyuncs.com/synbop/emqttd:2.3.6
+docker run --name emq-dev-robot -p 18084:18083 -p 1884:1883 -p 8085:8084 -p 8884:8883 -p 8086:8083 -d sneck/emqttd:latest
+docker run --name emq-text-server -p 18085:18083 -p 1885:1883 -p 8087:8084 -p 8885:8883 -p 8088:8083 -d devicexx/emqttd
+
+git clone -b master https://github.com/emqtt/emq_docker.git
+cd emq_docker
+docker build -t emq:latest .
+
 docker run --name emq-test-robot -p 18086:18083 -p 1886:1883 -p 8089:8084 -p 8886:8883 -p 8090:8083 -d registry.cn-hangzhou.aliyuncs.com/synbop/emqttd:2.3.6
 
 
